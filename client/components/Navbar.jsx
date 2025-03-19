@@ -99,7 +99,7 @@ const Navbar = () => {
           id="mobileMenu"
           className={`lg:hidden ${
             isMobileMenuOpen ? "block opacity-100" : "hidden opacity-0"
-          } mt-4 bg-neutral-800 rounded-lg p-4 absolute left-0 right-0 mx-6 z-10 transition-opacity duration-300`}
+          } mt-4 bg-neutral-800 rounded-lg p-4 absolute left-0 right-0 mx-6 z-50 transition-opacity duration-300`}
         >
           <ul className="space-y-3 font-['Montserrat,_sans-serif']">
             <li>
