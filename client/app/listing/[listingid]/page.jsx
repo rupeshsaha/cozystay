@@ -47,7 +47,19 @@ const ListingDetails = () => {
         if (!res.ok) throw new Error("Failed to fetch listing details");
         const data = await res.json();
 
-        setListing(data.listings[0]);
+        // Add three random Lorem Picsum images
+        const randomPicsumImages = Array.from(
+          { length: 3 },
+          () =>
+            `https://picsum.photos/id/${
+              Math.floor(Math.random() * 100) + 1
+            }/800/450`
+        );
+
+        setListing({
+          ...data.listings[0],
+          images: [...(data.listings[0].images || []), ...randomPicsumImages],
+        });
       } catch (error) {
         console.error("Error fetching listing details:", error);
       }
@@ -80,7 +92,7 @@ const ListingDetails = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData), // ✅ Ensure listingId is sent
+        body: JSON.stringify(formData),
       });
       const data = await res.json();
       if (res.ok) {
@@ -96,28 +108,26 @@ const ListingDetails = () => {
     }
   };
 
-const handleDateChange = useCallback((dates) => {
-  setFormData((prev) => ({
-    ...prev,
-    bookingDates: dates.map((date) => ({
-      startDate: new Date(date.startDate).toISOString().split("T")[0], // YYYY-MM-DD format
-      endDate: new Date(date.endDate).toISOString().split("T")[0], // YYYY-MM-DD format
-    })),
-  }));
-}, []);
+  const handleDateChange = useCallback((dates) => {
+    setFormData((prev) => ({
+      ...prev,
+      bookingDates: dates.map((date) => ({
+        startDate: new Date(date.startDate).toISOString().split("T")[0],
+        endDate: new Date(date.endDate).toISOString().split("T")[0],
+      })),
+    }));
+  }, []);
 
+  if (!listing) return null;
 
-
-if (!listing) return null;
   return (
-  
     <div className="max-w-6xl mx-auto p-6">
       {/* Photo Gallery */}
       <div className="relative w-full h-[400px] rounded-xl overflow-hidden">
-        {listing?.images?.map((img, index) => (
+        {listing.images.map((image, index) => (
           <img
             key={index}
-            src={img}
+            src={image}
             alt={`Image ${index + 1}`}
             className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-700 ${
               index === currentImageIndex ? "opacity-100" : "opacity-0"
@@ -129,22 +139,19 @@ if (!listing) return null;
       {/* Details Section */}
       <div className="mt-6">
         <h1 className="text-4xl font-bold text-gray-900">{listing?.title}</h1>
-        <p className="text-lg text-gray-600 mt-2">
-          {listing.address}
-        </p>
+        <p className="text-lg text-gray-600 mt-2">{listing.address}</p>
 
         {/* Available Dates */}
         <div className="mt-4">
           <span className="font-semibold text-lg">Available Dates:</span>
-          <p className="text-gray-700 mt-1">
-            {listing &&
-              listing.availableDates.map((availableDate, idx) => (
-                <p key={idx}>
-                  {new Date(availableDate.startDate).toLocaleDateString()} -{" "}
-                  {new Date(availableDate.endDate).toLocaleDateString()}
-                </p>
-              ))}
-          </p>
+          <div className="text-gray-700 mt-1">
+            {listing.availableDates.map((availableDate, idx) => (
+              <p key={idx}>
+                {new Date(availableDate.startDate).toLocaleDateString()} -{" "}
+                {new Date(availableDate.endDate).toLocaleDateString()}
+              </p>
+            ))}
+          </div>
         </div>
 
         {/* Requirements */}
@@ -152,7 +159,8 @@ if (!listing) return null;
           <div className="mt-6">
             <h2 className="text-2xl font-semibold">Requirements</h2>
             <ul className="list-disc list-inside mt-2 text-gray-700">
-              {listing.requirements}
+              {listing?.requirements 
+              }
             </ul>
           </div>
         )}
@@ -161,18 +169,21 @@ if (!listing) return null;
         <div className="mt-8">
           <Dialog>
             <DialogTrigger asChild>
-              <Button className="w-full">Book Now</Button>
+              <Button  className="w-full ">Book Now</Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
               <DialogHeader>
                 <DialogTitle>Confirm Booking</DialogTitle>
                 <DialogDescription>
-                  Choose your preferred dates and confirm the booking
+                  Choose your preferred dates and confirm the booking.
                 </DialogDescription>
               </DialogHeader>
               <form onSubmit={handleSubmit}>
                 <div className="grid w-full items-center gap-1.5 mt-4">
-                  <DatePicker onDateChange={handleDateChange} allowedDateRanges={listing.availableDates}/>
+                  <DatePicker
+                    onDateChange={handleDateChange}
+                    allowedDateRanges={listing.availableDates}
+                  />
                 </div>
                 <DialogFooter>
                   <Button

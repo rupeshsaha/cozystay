@@ -5,7 +5,6 @@ import { Home, MapPin, Pin } from "lucide-react";
 import Link from "next/link";
 
 const ListingCard = ({ data }) => {
-  const router = useRouter()
 
   return (
     <div class="bg-white dark:bg-neutral-800 rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:shadow-xl hover:-translate-y-2">
@@ -22,16 +21,13 @@ const ListingCard = ({ data }) => {
           <h3 class="text-xl font-bold text-neutral-800 dark:text-white ">
             {data.title}
           </h3>
-          <p class="text-lg font-bold text-[#D4AF37]">$9,450,000</p>
+          <p class="text-lg font-bold text-[#D4AF37]">${ data.rate} per night</p>
         </div>
         <p class="text-neutral-600 dark:text-neutral-300 mb-4 font-['Montserrat,_sans-serif']">
           {data?.requirements}
         </p>
         <div class="flex flex-wrap gap-4 mb-6">
-          <div class="flex items-center text-neutral-600 dark:text-neutral-300">
-            <Home className="text-yellow-500 mr-2"/>
-            <span>4 Bedrooms</span>
-          </div>
+         
           <div class="flex items-center text-neutral-600 dark:text-neutral-300">
             <MapPin className="text-yellow-500 mr-2"/>
             <span>{ data.address }</span>

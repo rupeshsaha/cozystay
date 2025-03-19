@@ -23,7 +23,6 @@ export const AuthProvider = ({ children }) => {
         );
         if (res.ok) {
           const data = await res.json();
-          console.log(data.loggedInUser);
           
           setUser(data.loggedInUser);
         }
@@ -76,7 +75,6 @@ export const AuthProvider = ({ children }) => {
       if (res.ok)
       {
         toast.success(data.message);
-        router.push("/login")
     }
       else
         toast.error(data.message)

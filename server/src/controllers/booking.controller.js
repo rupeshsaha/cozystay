@@ -3,7 +3,6 @@ import { Listing } from "../models/listing.model.js";
 
 export const createBooking = async (req, res) => {
   const { listingId, bookingDates } = req.body;
-  console.log(listingId)
   try {
     const listing = await Listing.findById(listingId);
     if (!listing) {
