@@ -129,13 +129,19 @@ const Navbar = () => {
                 List Property
               </Link>
             </li>
-            <li>
-              <LoginComponent triggerButton={true} />
-            </li>
-            <li>
-              {" "}
-              <SignupComponent triggerButton={true} />
-            </li>
+            {user ? (
+              <Button
+                variant="destructive"
+                onClick={async () => await logout()}
+              >
+                Logout
+              </Button>
+            ) : (
+              <>
+                <LoginComponent triggerButton={true} />
+                <SignupComponent triggerButton={true} />
+              </>
+            )}
           </ul>
         </div>
       </nav>
