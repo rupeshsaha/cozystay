@@ -43,14 +43,14 @@ const ListingsContainer = ({limit}) => {
   }, []);
 
   return (
-    <div className="flex sm:justify-start justify-center items-center flex-wrap gap-4 flex-1 col-span-3 mx-auto">
+    <div className="flex sm:justify-start justify-center items-start flex-wrap gap-4 flex-1 col-span-3 mx-auto">
       {isLoading ? (
         <Loader2 className="animate-spin" />
-      ) :  (
+      ) : (
         listings.map((listing) => (
           <ListingCard key={listing._id} data={listing} />
         ))
-      ) }
+      )}
     </div>
   );
 };

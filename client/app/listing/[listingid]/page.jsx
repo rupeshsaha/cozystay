@@ -120,7 +120,7 @@ const ListingDetails = () => {
   if (!listing) return null;
 
   return (
-    <div className="max-w-6xl mx-auto p-6">
+    <div className="max-w-6xl mx-auto p-6 ">
       <div className="relative w-full h-[400px] rounded-xl overflow-hidden">
         {listing.images.map((image, index) => (
           <img

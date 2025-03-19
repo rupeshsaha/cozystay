@@ -72,7 +72,7 @@ export default function CreateListingForm() {
   };
 
   return (
-    <div className="max-w-lg mx-auto p-6 bg-white shadow-lg rounded-xl">
+    <div className="max-w-lg my-4 border-2 mx-auto p-6 bg-white shadow-lg rounded-xl">
       <h2 className="text-2xl font-semibold mb-4">Create Property Listing</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>

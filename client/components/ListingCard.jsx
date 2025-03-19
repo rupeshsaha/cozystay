@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const ListingCard = ({ data }) => {
   return (
-    <div className="bg-white dark:bg-neutral-800 rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:shadow-xl hover:-translate-y-2 ">
+    <div className="bg-white dark:bg-neutral-800 rounded-lg overflow-hidden max-w-[350px] shadow-lg transition-transform duration-300 hover:shadow-xl hover:-translate-y-2 ">
       <div className="relative overflow-hidden h-64">
         <img
           src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80"
@@ -23,7 +23,7 @@ const ListingCard = ({ data }) => {
             ₹{data.rate} per night
           </p>
         </div>
-        <p className="text-neutral-600 dark:text-neutral-300 mb-4 font-['Montserrat,_sans-serif']">
+        <p className="text-neutral-600 dark:text-neutral-300 mb-4  flex">
           <Info className="text-yellow-500 mr-2" /> {data?.requirements}
         </p>
         <div className="flex flex-wrap gap-4 mb-6">
