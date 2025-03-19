@@ -87,8 +87,7 @@ const page = () => {
         className="py-20 md:py-28 bg-neutral-50 dark:bg-neutral-900"
       >
         <div className="container mx-auto px-6 sm:px-8 lg:px-12">
-          {/* Heading Section */}
-          <div className="text-center mb-14">
+      <div className="text-center mb-14">
             <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-neutral-800 dark:text-white leading-tight">
               Featured <span className="text-[#D4AF37]">Properties</span>
             </h2>
@@ -98,12 +97,10 @@ const page = () => {
             </p>
           </div>
 
-          {/* Listings Section */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10">
             <ListingsContainer limit={3} />
           </div>
 
-          {/* Button Section */}
           <div className="text-center mt-16">
             <Link
               href="/listings"

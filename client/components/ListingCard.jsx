@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
-import { Home, MapPin, Pin } from "lucide-react";
+import { Home, Info, MapPin, Pin } from "lucide-react";
 import Link from "next/link";
 
 const ListingCard = ({ data }) => {
@@ -24,7 +24,7 @@ const ListingCard = ({ data }) => {
           </p>
         </div>
         <p className="text-neutral-600 dark:text-neutral-300 mb-4 font-['Montserrat,_sans-serif']">
-          {data?.requirements}
+          <Info className="text-yellow-500 mr-2" /> {data?.requirements}
         </p>
         <div className="flex flex-wrap gap-4 mb-6">
           <div className="flex items-center text-neutral-600 dark:text-neutral-300">

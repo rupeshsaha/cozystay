@@ -47,7 +47,6 @@ const ListingDetails = () => {
         if (!res.ok) throw new Error("Failed to fetch listing details");
         const data = await res.json();
 
-        // Add three random Lorem Picsum images
         const randomPicsumImages = Array.from(
           { length: 3 },
           () =>
@@ -122,7 +121,6 @@ const ListingDetails = () => {
 
   return (
     <div className="max-w-6xl mx-auto p-6">
-      {/* Photo Gallery */}
       <div className="relative w-full h-[400px] rounded-xl overflow-hidden">
         {listing.images.map((image, index) => (
           <img
@@ -136,12 +134,10 @@ const ListingDetails = () => {
         ))}
       </div>
 
-      {/* Details Section */}
       <div className="mt-6">
         <h1 className="text-4xl font-bold text-gray-900">{listing?.title}</h1>
         <p className="text-lg text-gray-600 mt-2">{listing.address}</p>
 
-        {/* Available Dates */}
         <div className="mt-4">
           <span className="font-semibold text-lg">Available Dates:</span>
           <div className="text-gray-700 mt-1">
@@ -154,7 +150,6 @@ const ListingDetails = () => {
           </div>
         </div>
 
-        {/* Requirements */}
         {listing?.requirements?.length > 0 && (
           <div className="mt-6">
             <h2 className="text-2xl font-semibold">Requirements</h2>
@@ -171,7 +166,6 @@ const ListingDetails = () => {
           </ul>
         </div>
 
-        {/* Book Now Button */}
         <div className="mt-8">
           <Dialog>
             <DialogTrigger asChild>

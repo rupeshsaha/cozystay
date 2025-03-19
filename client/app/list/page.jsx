@@ -11,12 +11,11 @@ export default function CreateListingForm() {
     availableDates: [],
     address: "",
     requirements: "",
-    rate: 0,
+    rate: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // ✅ Handle input changes (convert rate to number)
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -25,18 +24,16 @@ export default function CreateListingForm() {
     });
   };
 
-  // ✅ Handle date change and set correct format
   const handleDateChange = useCallback((dates) => {
     setFormData((prev) => ({
       ...prev,
       availableDates: dates.map((date) => ({
-        startDate: new Date(date.startDate).toISOString().split("T")[0], // YYYY-MM-DD format
-        endDate: new Date(date.endDate).toISOString().split("T")[0], // YYYY-MM-DD format
+        startDate: new Date(date.startDate).toISOString().split("T")[0], 
+        endDate: new Date(date.endDate).toISOString().split("T")[0], 
       })),
     }));
   }, []);
 
-  // ✅ Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -56,7 +53,6 @@ export default function CreateListingForm() {
 
       if (res.ok) {
         toast.success(data.message);
-        // Reset form on success
         setFormData({
           title: "",
           availableDates: [],
@@ -79,7 +75,6 @@ export default function CreateListingForm() {
     <div className="max-w-lg mx-auto p-6 bg-white shadow-lg rounded-xl">
       <h2 className="text-2xl font-semibold mb-4">Create Property Listing</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
-        {/* Title */}
         <div>
           <label className="block text-sm font-medium text-gray-700">
             Title
@@ -94,7 +89,6 @@ export default function CreateListingForm() {
           />
         </div>
 
-        {/* Available Dates */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Available Dates
@@ -102,7 +96,6 @@ export default function CreateListingForm() {
           <DatePicker onDateChange={handleDateChange} />
         </div>
 
-        {/* Rate per night */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Rate per night (in INR)
@@ -118,7 +111,6 @@ export default function CreateListingForm() {
           />
         </div>
 
-        {/* Address */}
         <div>
           <label className="block text-sm font-medium text-gray-700">
             Address
@@ -133,7 +125,6 @@ export default function CreateListingForm() {
           />
         </div>
 
-        {/* Requirements */}
         <div>
           <label className="block text-sm font-medium text-gray-700">
             Requirements
@@ -148,7 +139,6 @@ export default function CreateListingForm() {
           />
         </div>
 
-        {/* Submit Button */}
         <div>
           <Button type="submit" disabled={isSubmitting} className="w-full">
             {isSubmitting && <Loader2 className="animate-spin mr-2" />}

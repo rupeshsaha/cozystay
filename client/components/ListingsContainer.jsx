@@ -9,7 +9,7 @@ const ListingsContainer = ({limit}) => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    let isMounted = true; // To prevent state update on unmounted component
+    let isMounted = true; 
 
     const fetchData = async () => {
       try {
@@ -38,7 +38,7 @@ const ListingsContainer = ({limit}) => {
     fetchData();
 
     return () => {
-      isMounted = false; // Cleanup to prevent state updates on unmount
+      isMounted = false;
     };
   }, []);
 
