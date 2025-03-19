@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import ListingCard from "./ListingCard";
 import { Loader2 } from "lucide-react";
 
-const ListingsContainer = () => {
+const ListingsContainer = ({limit}) => {
   const [listings, setListings] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -14,7 +14,7 @@ const ListingsContainer = () => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/listing`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/listing?limit=${limit}`, {
           method: "GET",
         });
 
@@ -43,7 +43,7 @@ const ListingsContainer = () => {
   }, []);
 
   return (
-    <div className="flex sm:justify-start justify-center flex-wrap gap-4 flex-1">
+    <div className="flex sm:justify-start justify-center items-center flex-wrap gap-4 flex-1 col-span-3 mx-auto">
       {isLoading ? (
         <Loader2 className="animate-spin" />
       ) :  (

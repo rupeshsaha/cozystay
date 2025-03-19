@@ -159,17 +159,23 @@ const ListingDetails = () => {
           <div className="mt-6">
             <h2 className="text-2xl font-semibold">Requirements</h2>
             <ul className="list-disc list-inside mt-2 text-gray-700">
-              {listing?.requirements 
-              }
+              {listing?.requirements}
             </ul>
           </div>
         )}
+
+        <div className="mt-6">
+          <h2 className="text-2xl font-semibold">Pay Per Night</h2>
+          <ul className="list-disc list-inside mt-2 text-gray-700">
+            {listing?.rate}
+          </ul>
+        </div>
 
         {/* Book Now Button */}
         <div className="mt-8">
           <Dialog>
             <DialogTrigger asChild>
-              <Button  className="w-full ">Book Now</Button>
+              <Button className="w-full ">Book Now</Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
               <DialogHeader>
