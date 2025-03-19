@@ -138,8 +138,8 @@ if (!listing) return null;
           <span className="font-semibold text-lg">Available Dates:</span>
           <p className="text-gray-700 mt-1">
             {listing &&
-              listing.availableDates.map((availableDate) => (
-                <p>
+              listing.availableDates.map((availableDate, idx) => (
+                <p key={idx}>
                   {new Date(availableDate.startDate).toLocaleDateString()} -{" "}
                   {new Date(availableDate.endDate).toLocaleDateString()}
                 </p>

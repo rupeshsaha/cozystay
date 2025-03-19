@@ -48,7 +48,7 @@ const ListingsContainer = () => {
         <Loader2 className="animate-spin" />
       ) :  (
         listings.map((listing) => (
-          <ListingCard key={listing.id} data={listing} />
+          <ListingCard key={listing._id} data={listing} />
         ))
       ) }
     </div>
