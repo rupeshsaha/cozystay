@@ -91,7 +91,7 @@ export default function CreateListingForm() {
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Available Dates
+            Select Available Date Range
           </label>
           <DatePicker onDateChange={handleDateChange} />
         </div>

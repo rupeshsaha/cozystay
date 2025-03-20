@@ -175,7 +175,7 @@ const ListingDetails = () => {
               <DialogHeader>
                 <DialogTitle>Confirm Booking</DialogTitle>
                 <DialogDescription>
-                  Choose your preferred dates and confirm the booking.
+                  Choose your preferred date range and confirm the booking.
                 </DialogDescription>
               </DialogHeader>
               <form onSubmit={handleSubmit}>
