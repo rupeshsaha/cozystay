@@ -96,6 +96,7 @@ export const logoutUser = (req, res) => {
       httpOnly: true,
       secure: true,
       sameSite: "None",
+      partitioned: true,
       expires: new Date(0), 
       path: "/",
     });
