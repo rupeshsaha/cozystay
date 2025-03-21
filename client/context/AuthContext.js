@@ -94,7 +94,8 @@ export const AuthProvider = ({ children }) => {
      const data = await res.json();
 
      if (res.ok) {
-       toast.success("Logged Out Successfully")
+       toast.success("Logged Out Successfully");
+       setUser(null)
      } else {
        toast.error(data.message);
      }
