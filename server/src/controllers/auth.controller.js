@@ -71,7 +71,6 @@ export const loginUser = async (req, res) => {
       sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
       path: "/",
-      domain: "https://cozystay-ten.vercel.app",
     });
 
     return res.status(200).json({
