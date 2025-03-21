@@ -24,10 +24,10 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-      const consent =
-        typeof window !== "undefined"
-          ? localStorage.getItem("cookieConsent")
-          : null;
+      // const consent =
+      //   typeof window !== "undefined"
+      //     ? localStorage.getItem("cookieConsent")
+      //     : null;
   return (
     <html lang="en">
       <body
@@ -38,8 +38,6 @@ export default function RootLayout({ children }) {
           <div className="">
             <Navbar />
             {children}
-            <CookieBanner />
-            {consent === "accepted" && <ThirdPartyCookieFrame />}
             <Footer />
 
             <Toaster position="top-right" richColors />

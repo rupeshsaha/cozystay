@@ -21,17 +21,6 @@ import authRoutes from "./src/routes/auth.route.js"
 import listingRoutes from "./src/routes/listing.route.js"
 import bookingRoutes from "./src/routes/booking.route.js"
 
-app.get("/set-cookie", (req, res) => {
-  res.cookie("thirdPartyCookie", "enabled", {
-    httpOnly: true, 
-    secure: true, 
-    sameSite: "None", 
-    domain: "https://cozystay-l0p6.onrender.com", 
-    maxAge: 7 * 24 * 60 * 60 * 1000, 
-  });
-
-  res.status(200).json({ message: "Cookie set successfully!" });
-});
 
 app.use("/auth", authRoutes)
 app.use("/listing", listingRoutes)
